@@ -25,13 +25,15 @@ namespace CurrencyBot
             {
                 foreach (var item in ListCommands.GetAllCommands())
                 {
-                    if (e.Message.Text.StartsWith(item.TextCommand))
+                    if (item.TextCommand.Contains(e.Message.Text))
                     {
                         item.Execute(client, e.Message);
                         break;
                     }
+                    client.SendTextMessageAsync(e.Message.Chat, "Дане повідомлення не є командою!"); // !!!выводит то кол. скольк команд.
                 }
             }
+            
         }
     }
 }

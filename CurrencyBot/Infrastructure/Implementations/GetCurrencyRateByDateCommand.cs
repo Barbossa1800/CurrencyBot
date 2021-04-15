@@ -19,9 +19,7 @@ namespace CurrencyBot.Infrastructure.Implementations
                 client.SendTextMessageAsync(message.Chat, "Будь ласка впишіть дату коректно!");
                 return;
             }
-            var date = message.Text.Split('.')[1]; // get date thriugh form '20210401'
-            // баг - выдаёт всегда за текущую дату!
-            // должны быть разные названия, потому что идёт вызов обычного метода с валютой*/
+            var date = message.Text.Split('.')[1];
             var rates = NBU.GetRatesByDateAsync(date).GetAwaiter().GetResult();
             StringBuilder src = new StringBuilder();
             foreach (var item in rates)
