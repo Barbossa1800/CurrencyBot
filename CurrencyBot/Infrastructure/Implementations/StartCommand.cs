@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 
-namespace CurrencyBot.Infrastructure.Implementation
+namespace CurrencyBot.Infrastructure.Implementations
 {
     public class StartCommand : Command
     {
@@ -14,7 +14,7 @@ namespace CurrencyBot.Infrastructure.Implementation
 
         public override void Execute(ITelegramBotClient client, Message message)
         {
-            var commands = Commands.AllCommands;
+            var commands = ListCommands.GetAllCommands();
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Привіт!");
             sb.AppendLine("Я підтримую наступні команди:");

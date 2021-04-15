@@ -1,4 +1,4 @@
-﻿using CurrencyBot.Infrastructure.Implementation;
+﻿using CurrencyBot.Infrastructure;
 using System;
 using System.Threading.Tasks;
 using Telegram.Bot;
@@ -23,7 +23,7 @@ namespace CurrencyBot
         {
             if (e.Message.Type == MessageType.Text)
             {
-                foreach (var item in Commands.AllCommands)
+                foreach (var item in ListCommands.GetAllCommands())
                 {
                     if (e.Message.Text.StartsWith(item.TextCommand))
                     {

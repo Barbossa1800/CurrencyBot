@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 
-namespace CurrencyBot.Infrastructure.Implementation
+namespace CurrencyBot.Infrastructure.Implementations
 {
     public class HelpCommand : Command
     {

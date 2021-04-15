@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 
-namespace CurrencyBot.Infrastructure.Implementation
+namespace CurrencyBot.Infrastructure.Implementations
 {
     public class GetCurrencyRateCommand : Command
     {
         public GetCurrencyRateCommand()
         {
-            TextCommand = "/gateRate";
+            TextCommand = "/getRate";
         }
         public override void Execute(ITelegramBotClient client, Message message)
         {
