@@ -10,7 +10,7 @@ namespace CurrencyBot.Infrastructure.Implementation
     {
         public static List<Command> AllCommands = new List<Command>()
         {
-
+            new StartCommand(),
         };
     }
 }
