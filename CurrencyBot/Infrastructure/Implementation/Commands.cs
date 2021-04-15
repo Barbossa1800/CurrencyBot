@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace CurrencyBot.Infrastructure.Implementation
 {
-    class Commands
+    public class Commands
     {
+        public static List<Command> AllCommands = new List<Command>()
+        {
+
+        };
     }
 }
