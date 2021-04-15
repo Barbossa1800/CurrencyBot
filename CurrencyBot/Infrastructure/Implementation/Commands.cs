@@ -11,6 +11,11 @@ namespace CurrencyBot.Infrastructure.Implementation
         public static List<Command> AllCommands = new List<Command>()
         {
             new StartCommand(),
+            new HelloCommand(),
+            new HelpCommand(),
+            new GetTimeCommand(),
+            new GetCurrencyRateCommand(),
+            new GetCurrencyRateByDateCommand(),
         };
     }
 }
