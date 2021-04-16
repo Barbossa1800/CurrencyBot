@@ -16,6 +16,7 @@ namespace CurrencyBot.Infrastructure
             new HelloCommand(),
             new HelpCommand(),
             new GetTimeCommand(),
+            new GetMainCurrencyCommand(),
             new GetCurrencyRateCommand(),
             new GetCurrencyRateByDateCommand(),
         };

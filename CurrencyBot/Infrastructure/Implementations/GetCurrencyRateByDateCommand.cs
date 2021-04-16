@@ -17,7 +17,7 @@ namespace CurrencyBot.Infrastructure.Implementations
             var request = message.Text.Split(Exts.Delimiters);
             if (request.Length <= 1)
             {
-                client.SendTextMessageAsync(message.Chat, "Будь ласка впишіть дату коректно!");
+                client.SendTextMessageAsync(message.Chat, $"Будь ласка впишіть дату коректно (/getRateByDate.{DateTime.Now.ToString("yyyyMMdd")})!");
                 return;
             }
             var date = message.Text.Split(Exts.Delimiters)[1];

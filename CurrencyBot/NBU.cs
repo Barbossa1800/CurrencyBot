@@ -21,5 +21,15 @@ namespace CurrencyBot
             using var httpClient = new HttpClient();
             return await httpClient.GetFromJsonAsync<List<CurrencyRate>>($"https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date={date}&json");
         }
+
+        public static async Task<List<CurrencyRate>> GetMainCurrenciesAsync()
+        {
+            using var httpClient = new HttpClient();
+            var currencies = await httpClient.GetFromJsonAsync<List<CurrencyRate>>("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json");
+            return currencies
+                .Where(d => d.txt.Contains("Росій") || d.txt.Contains("США") || d.txt.Contains("Євро"))
+                .OrderBy(d => d.rate)
+                .ToList();
+        }
     }
 }
