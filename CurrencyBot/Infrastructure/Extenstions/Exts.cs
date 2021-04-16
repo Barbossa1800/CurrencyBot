@@ -16,8 +16,7 @@ namespace CurrencyBot.Infrastructure.Extenstions
         {
             if (text.StartsWith(command))
             {
-                var texts = text.Split(delimiters);
-                if (command == texts[0])
+                if (command == text.Split(delimiters)[0])
                     return true;
                 return false;
             }
