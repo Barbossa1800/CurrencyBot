@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CurrencyBot.Infrastructure.Extenstions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,13 +14,13 @@ namespace CurrencyBot.Infrastructure.Implementations
         public GetCurrencyRateByDateCommand() : base("/getRateByDate", "get getRateByDate", "examp") { }
         public override void Execute(ITelegramBotClient client, Message message)
         {
-            var request = message.Text.Split('.');
+            var request = message.Text.Split(Exts.Delimiters);
             if (request.Length <= 1)
             {
                 client.SendTextMessageAsync(message.Chat, "Будь ласка впишіть дату коректно!");
                 return;
             }
-            var date = message.Text.Split('.')[1];
+            var date = message.Text.Split(Exts.Delimiters)[1];
             var rates = NBU.GetRatesByDateAsync(date).GetAwaiter().GetResult();
             StringBuilder src = new StringBuilder();
             foreach (var item in rates)

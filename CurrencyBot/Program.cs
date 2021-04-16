@@ -1,4 +1,5 @@
 ﻿using CurrencyBot.Infrastructure;
+using CurrencyBot.Infrastructure.Extenstions;
 using System;
 using System.Threading.Tasks;
 using Telegram.Bot;
@@ -25,15 +26,14 @@ namespace CurrencyBot
             {
                 foreach (var item in ListCommands.GetAllCommands())
                 {
-                    if (item.TextCommand.Contains(e.Message.Text))
+                    if (item.TextCommand.CheckCommand(e.Message.Text))
                     {
                         item.Execute(client, e.Message);
-                        break;
+                        return;
                     }
-                    client.SendTextMessageAsync(e.Message.Chat, "Дане повідомлення не є командою!"); // !!!выводит то кол. скольк команд.
                 }
             }
-            
+            client.SendTextMessageAsync(e.Message.Chat, "Команда не вірна!");
         }
     }
 }

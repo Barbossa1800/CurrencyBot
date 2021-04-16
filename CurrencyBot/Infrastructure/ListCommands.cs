@@ -16,10 +16,9 @@ namespace CurrencyBot.Infrastructure
             new HelloCommand(),
             new HelpCommand(),
             new GetTimeCommand(),
+            new GetCurrencyRateCommand(),
             new GetCurrencyRateByDateCommand(),
-            new GetCurrencyRateCommand()
         };
-
         public static List<Command> GetAllCommands() => _commands;
 
     }
