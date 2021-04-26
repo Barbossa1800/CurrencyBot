@@ -25,7 +25,7 @@ namespace CurrencyBot.Infrastructure.Implementations
             StringBuilder src = new StringBuilder();
             foreach (var item in rates)
             {
-                src.AppendLine($"{item.txt} - {item.rate}"); //erorr - null value
+                src.AppendLine($"{item.txt} - {item.rate}");
             }
             client.SendTextMessageAsync(message.Chat, src.ToString());
         }
