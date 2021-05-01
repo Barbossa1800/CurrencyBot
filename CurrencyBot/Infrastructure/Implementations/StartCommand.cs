@@ -10,19 +10,11 @@ namespace CurrencyBot.Infrastructure.Implementations
 {
     public class StartCommand : Command
     {
-        public StartCommand() : base("/start", "", "") { }
+        public StartCommand() : base("/start", "Команда використовується для початку роботи з ботом",  "/start") { }
 
         public override void Execute(ITelegramBotClient client, Message message)
         {
-            var commands = ListCommands.GetAllCommands();
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Привіт!");
-            sb.AppendLine("Я підтримую наступні команди:");
-            foreach (var command in commands)
-            {
-                sb.AppendLine($"{command.TextCommand} {command.Des} [{command.Example}]");
-            }
-            client.SendTextMessageAsync(message.Chat, sb.ToString());
+            client.SendTextMessageAsync(message.Chat, $"Привіт, {message.From.FirstName}!!!\nДля команд: /commands");
         }
     }
 }

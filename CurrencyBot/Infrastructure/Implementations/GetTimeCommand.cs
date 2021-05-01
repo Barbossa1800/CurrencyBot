@@ -10,10 +10,7 @@ namespace CurrencyBot.Infrastructure.Implementations
 {
     public class GetTimeCommand : Command
     {
-        public GetTimeCommand()
-        {
-            TextCommand = "/getTime";
-        }
+        public GetTimeCommand() : base("/getTime", "Команда показує поточний час ", "/getTime") { }
         public override void Execute(ITelegramBotClient client, Message message)
         {
             client.SendTextMessageAsync(message.Chat, $"{DateTime.UtcNow.ToLocalTime().ToLongDateString()}");

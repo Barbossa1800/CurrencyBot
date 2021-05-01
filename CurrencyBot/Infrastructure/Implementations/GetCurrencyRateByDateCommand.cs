@@ -11,7 +11,8 @@ namespace CurrencyBot.Infrastructure.Implementations
 {
     public class GetCurrencyRateByDateCommand : Command
     {
-        public GetCurrencyRateByDateCommand() : base("/getRateByDate", "get getRateByDate", "examp") { }
+        public GetCurrencyRateByDateCommand() : base("/getRateByDate", "Дана команду видає користувачу курс валют за певну дату," +
+            "згідно  НБУ", $"/getRateByDate['.', ' ', ',', '-', '_']{DateTime.Today.ToString("yyyyMMdd")}") { }
         public override void Execute(ITelegramBotClient client, Message message)
         {
             var request = message.Text.Split(Exts.Delimiters);
@@ -23,9 +24,9 @@ namespace CurrencyBot.Infrastructure.Implementations
             var date = message.Text.Split(Exts.Delimiters)[1];
             var rates = NBU.GetRatesByDateAsync(date).GetAwaiter().GetResult();
             StringBuilder src = new StringBuilder();
-            foreach (var item in rates)
+            foreach (var item in rates.OrderBy(d => d.Text))
             {
-                src.AppendLine($"{item.txt} - {item.rate}");
+                src.AppendLine($"{item.Text} - {item.Rate}");
             }
             client.SendTextMessageAsync(message.Chat, src.ToString());
         }

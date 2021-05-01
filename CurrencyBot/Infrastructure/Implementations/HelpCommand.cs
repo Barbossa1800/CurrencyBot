@@ -10,7 +10,7 @@ namespace CurrencyBot.Infrastructure.Implementations
 {
     public class HelpCommand : Command
     {
-        public HelpCommand() : base("/help", "get help", "examp") { }
+        public HelpCommand() : base("/help", "Команда надає допомгу користувачу у питаннях", "/help") { }
 
         public override void Execute(ITelegramBotClient client, Message message)
         {

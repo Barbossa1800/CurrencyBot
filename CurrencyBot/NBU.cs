@@ -27,8 +27,8 @@ namespace CurrencyBot
             using var httpClient = new HttpClient();
             var currencies = await httpClient.GetFromJsonAsync<List<CurrencyRate>>("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json");
             return currencies
-                .Where(d => d.txt.Contains("Росій") || d.txt.Contains("США") || d.txt.Contains("Євро"))
-                .OrderBy(d => d.rate)
+                .Where(d => d.Text.Contains("Росій") || d.Text.Contains("США") || d.Text.Contains("Євро"))
+                .OrderBy(d => d.Rate)
                 .ToList();
         }
     }

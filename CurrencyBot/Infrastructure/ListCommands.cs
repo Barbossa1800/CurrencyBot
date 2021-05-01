@@ -12,13 +12,16 @@ namespace CurrencyBot.Infrastructure
 
         private static List<Command> _commands /*нотация внутренего элемента*/ = new List<Command>()
         {
+            new AllCommand(),
             new StartCommand(),
-            new HelloCommand(),
+            //new HelloCommand(), лишняя, есть тстартовая
             new HelpCommand(),
             new GetTimeCommand(),
             new GetMainCurrencyCommand(),
             new GetCurrencyRateCommand(),
             new GetCurrencyRateByDateCommand(),
+            new CalculateCurrenciesCommand(),
+            new CalculateCommand(),
         };
         public static List<Command> GetAllCommands() => _commands;
 

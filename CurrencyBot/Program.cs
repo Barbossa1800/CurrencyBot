@@ -2,6 +2,7 @@
 using CurrencyBot.Infrastructure.Extenstions;
 using CurrencyBot.Infrastructure.Services;
 using System;
+using System.Text;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types.Enums;
@@ -19,19 +20,20 @@ namespace CurrencyBot
             Console.WriteLine($"Hello from {bot.FirstName}");
             client.OnMessage += Client_OnMessage;
             client.StartReceiving();
-            var bgs = new ScheduleBackgroundService(Token);
-            await bgs.StartAsync(new System.Threading.CancellationToken());
             Console.ReadKey();
             client.StopReceiving();
         }
         private static void Client_OnMessage(object sender, Telegram.Bot.Args.MessageEventArgs e)
         {
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.WriteLine($"Name: {e.Message.From.FirstName}, Language: {e.Message.From.LanguageCode}, Id: {e.Message.From.Id} [{e.Message.Text}]");
             if (e.Message.Type == MessageType.Text)
             {
                 foreach (var item in ListCommands.GetAllCommands())
                 {
                     if (item.TextCommand.CheckCommand(e.Message.Text))
                     {
+                        e.Message.Text = e.Message.Text.ToLower();
                         item.Execute(client, e.Message);
                         return;
                     }
