@@ -26,7 +26,7 @@ namespace CurrencyBot
         private static void Client_OnMessage(object sender, Telegram.Bot.Args.MessageEventArgs e)
         {
             Console.OutputEncoding = Encoding.UTF8;
-            Console.WriteLine($"Name: {e.Message.From.FirstName}, Language: {e.Message.From.LanguageCode}, Id: {e.Message.From.Id} [{e.Message.Text}]");
+            Console.WriteLine($"Name: {e.Message.From.FirstName}, Id: {e.Message.From.Id} [{e.Message.Text}]");
             if (e.Message.Type == MessageType.Text)
             {
                 foreach (var item in ListCommands.GetAllCommands())

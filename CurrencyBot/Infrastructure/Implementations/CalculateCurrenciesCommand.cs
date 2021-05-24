@@ -32,7 +32,8 @@ namespace CurrencyBot.Infrastructure.Implementations
                 }
                 var firstSum = sum * fromCurrency.Rate;
                 var secondSum = Math.Round(firstSum / toCurrency.Rate, 2);
-                client.SendTextMessageAsync(message.Chat, $"Якщо первести {sum} з {fromCurrency.Text} в {toCurrency.Text}, то буде {secondSum}");
+                client.SendTextMessageAsync(message.Chat, $"Якщо первести {sum} з {fromCurrency.Text} в {toCurrency.Text}, то буде {secondSum} " +
+                    $"{toCurrency.Text}");
             }
             catch (Exception ex)
             {
