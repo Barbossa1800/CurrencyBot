@@ -16,7 +16,7 @@ namespace CurrencyBot.Infrastructure
             new StartCommand(),
             //new HelloCommand(), лишняя, есть тстартовая
             new HelpCommand(),
-            new GetTimeCommand(),
+            new GetDateCommand(),
             new GetMainCurrencyCommand(),
             new GetCurrencyRateCommand(),
             new GetCurrencyRateByDateCommand(),

@@ -8,9 +8,9 @@ using Telegram.Bot.Types;
 
 namespace CurrencyBot.Infrastructure.Implementations
 {
-    public class GetTimeCommand : Command
+    public class GetDateCommand : Command
     {
-        public GetTimeCommand() : base("/getTime", "Команда показує поточний час ", "/getTime") { }
+        public GetDateCommand() : base("/getDate", "Команда показує поточну дату ", "/getDate") { }
         public override void Execute(ITelegramBotClient client, Message message)
         {
             client.SendTextMessageAsync(message.Chat, $"{DateTime.UtcNow.ToLocalTime().ToLongDateString()}");
